@@ -22,9 +22,11 @@ foreach ($t in $tasks) {
             Write-Output "Started task '$($t.Path)$($t.Name)'."
         } else {
             Write-Output "Task '$($t.Path)$($t.Name)' is already running."
+            Exit 0
         }
     } catch {
-        Write-Error "Failed to start task '$($t.Path)$($t.Name)': $($_.Exception.Message)"
+        Write-Output "Failed to start task '$($t.Path)$($t.Name)': $($_.Exception.Message)"
         exit 1
     }
+
 }
